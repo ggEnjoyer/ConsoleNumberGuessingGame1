@@ -3,6 +3,7 @@
 while (true)
 {
     Console.OutputEncoding = System.Text.Encoding.Unicode;
+    AudioController.PlayMenuMusic();
 
     Console.WriteLine(@"
                     | \ | |               | |              
@@ -42,8 +43,13 @@ while (true)
     var s = Console.ReadKey(true).Key;
     switch (s)
     {
-        case ConsoleKey.S: TheGame.Start(); break;
-        case ConsoleKey.E: Environment.Exit(0); break;
+        case ConsoleKey.S:
+            AudioController.StopMenuMusic();
+            AudioController.PlayGameMusic();
+            TheGame.Start(); break;
+        case ConsoleKey.E: 
+            Environment.Exit(0); break;
     }
     Console.Clear();
+    AudioController.StopGameMusic();
 }
