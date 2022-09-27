@@ -39,13 +39,13 @@ namespace ConsoleNumberGuessingGame1
                     else if(secretNumber < trialNumber)
                     {
                         pastActions += trialNumber + "(<);   ";
-                        score--;
+                        score /= 2;
                         Console.Clear();
                     }
                     else if (secretNumber > trialNumber)
                     {
                         pastActions += trialNumber + "(>);   ";
-                        score--;
+                        score /= 2;
                         Console.Clear();
                     }
                 }
