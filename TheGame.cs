@@ -8,9 +8,9 @@ namespace ConsoleNumberGuessingGame1
 {
     static class TheGame
     {
-        private static int score;
-        private static int secretNumber;
-        private static int trialNumber;
+        private static double score;
+        private static double secretNumber;
+        private static double trialNumber;
         private static string? pastActions;
 
         public static void Start()
@@ -22,7 +22,7 @@ namespace ConsoleNumberGuessingGame1
             while(true)
             {
                 Console.Clear();
-                Console.WriteLine("\n\tIf you guess the number right now, you will get " + score + " points");
+                Console.WriteLine("\n\tIf you guess the number right now, you will get " + (int)score + " points");
                 Console.WriteLine("\n\tYour tries: " + pastActions);
                 Console.Write("\n\tEnter your guess: ");
 
@@ -31,7 +31,7 @@ namespace ConsoleNumberGuessingGame1
                     trialNumber = Convert.ToInt32(Console.ReadLine());
                     if (secretNumber == trialNumber)
                     {
-                        SaveController.AddResult(score);
+                        SaveController.AddResult((int)score);
                         Console.Write("\t - Yes! Exactly");
                         Console.ReadKey(true);
                         break;
@@ -39,13 +39,13 @@ namespace ConsoleNumberGuessingGame1
                     else if(secretNumber < trialNumber)
                     {
                         pastActions += trialNumber + "(<);   ";
-                        score /= 2;
+                        score /= 1.15;
                         Console.Clear();
                     }
                     else if (secretNumber > trialNumber)
                     {
                         pastActions += trialNumber + "(>);   ";
-                        score /= 2;
+                        score /= 1.15;
                         Console.Clear();
                     }
                 }
